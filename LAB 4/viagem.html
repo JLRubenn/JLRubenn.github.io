@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Paris</title>
+</head>
+<body>
+    <header>
+        <h1>Paris</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="local.html">Localização</a>
+            <a href="multimedia.html">Multimédia</a>
+            <a href="info.html">Informação</a>
+            <a href="quizz.html">Quizz</a>
+            <a href="viagem.html">Viagem</a>
+        </nav>
+        <img src="images/paris.jpeg" alt="Paris">
+    </header>
+    <main>
+        <h2>Viagem</h2>
+        <form method="post" action="https://postman-echo.com/post">
+            <fieldset>
+                <legend>Dados Pessoais</legend>
+                
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Insira nome" required><br><br>
+                
+                <label for="apelido">Apelido:</label>
+                <input type="text" id="apelido" name="apelido" placeholder="Insira apelido" required><br><br>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required><br><br>
+            </fieldset>
+    
+            
+            <fieldset>
+                <legend>Detalhes da Viagem</legend>
+                
+                
+                <label for="data_partida">Data de Partida:</label>
+                <input type="date" id="data_partida" name="data_partida" required><br><br>
+                
+                
+                <label for="data_regresso">Data de Regresso:</label>
+                <input type="date" id="data_regresso" name="data_regresso" required><br><br>
+    
+                
+                <label for="num_passageiros">Número de Passageiros:</label>
+                <input type="number" id="num_passageiros" name="num_passageiros" min="1" max="10" step="1" value="1" required><br><br>
+                
+               
+                <label for="transporte_favorito">Meio de Transporte Favorito:</label>
+                <select id="transporte_favorito" name="transporte_favorito" required>
+                    <option value="carro">Carro</option>
+                    <option value="comboio">Comboio</option>
+                    <option value="aviao">Avião</option>
+                    <option value="outros">Outros</option>
+                </select><br><br>
+    
+                
+                <label>Serviço Desejado:</label><br>
+                <input type="radio" id="basico" name="servico" value="basico" required>
+                <label for="basico">Básico</label><br>
+                <input type="radio" id="premium" name="servico" value="premium">
+                <label for="premium">Premium</label><br><br>
+    
+                
+                <label for="pedidos_especiais">Pedidos Especiais:</label><br>
+                <textarea id="pedidos_especiais" name="pedidos_especiais" rows="4" cols="50" placeholder="Insira seus pedidos especiais"></textarea><br><br>
+    
+                
+                <label for="valor_gasto">Valor que espera gastar por pessoa e por dia (em euros):</label>
+                <input type="number" id="valor_gasto" name="valor_gasto" min="0" step="0.01" placeholder="Ex: 100.00" required><br><br>
+            </fieldset>
+    
+            <fieldset><input type="submit" value="Enviar Intenção de Viagem"></fieldset>
+        </form>
+    </main>
+    <footer>
+        <p>Ruben Graça - Universidade Lusofona - 2024</p>
+    </footer>
+</body>
+</html>

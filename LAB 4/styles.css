@@ -1,0 +1,49 @@
+h1 {
+    background-color: blue;
+    text-align: center;
+    color: white;
+    margin: 0px;
+    padding: 15px;
+}
+
+h2{
+    padding: 5px;
+}
+
+p {
+    padding: 3px;
+}
+
+nav {
+    background-color: #808080;
+    color: white;
+    text-align: center;
+    padding: 3px;
+    font-size: 13px;
+}
+
+a{
+    color: white;
+}
+
+image {
+    text-align: center;
+    width: 100%;
+}
+
+footer {
+    color: white;
+    background-color: #808080;
+    text-align: center;
+    
+}
+
+main{
+    background-color: white;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+body {
+   background-color: #F1E4F3; 
+}
