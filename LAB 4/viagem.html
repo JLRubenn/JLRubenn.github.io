@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <title>Paris</title>
 </head>
 <body>
@@ -17,7 +17,10 @@
             <a href="quizz.html">Quizz</a>
             <a href="viagem.html">Viagem</a>
         </nav>
-        <img src="images/paris.jpeg" alt="Paris">
+        <div class="image-container">
+            <img src="images/paris.jpeg" alt="Paris" class="center-img">
+            <img src="images/cada8c_a8ad1da8aed349b6a33c3d1d9e39ea34~mv2.jpeg" alt="paris2" class="center-img2">
+        </div>
     </header>
     <main>
         <h2>Viagem</h2>
@@ -26,13 +29,13 @@
                 <legend>Dados Pessoais</legend>
                 
                 <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" placeholder="Insira nome" required><br><br>
+                <input type="text" id="nome" name="nome" placeholder="Insira nome" required>
                 
                 <label for="apelido">Apelido:</label>
-                <input type="text" id="apelido" name="apelido" placeholder="Insira apelido" required><br><br>
+                <input type="text" id="apelido" name="apelido" placeholder="Insira apelido" required>
                 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required><br><br>
+                <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
             </fieldset>
     
             
@@ -41,15 +44,15 @@
                 
                 
                 <label for="data_partida">Data de Partida:</label>
-                <input type="date" id="data_partida" name="data_partida" required><br><br>
+                <input type="date" id="data_partida" name="data_partida" required>
                 
                 
                 <label for="data_regresso">Data de Regresso:</label>
-                <input type="date" id="data_regresso" name="data_regresso" required><br><br>
+                <input type="date" id="data_regresso" name="data_regresso" required>
     
                 
                 <label for="num_passageiros">Número de Passageiros:</label>
-                <input type="number" id="num_passageiros" name="num_passageiros" min="1" max="10" step="1" value="1" required><br><br>
+                <input type="number" id="num_passageiros" name="num_passageiros" min="1" max="10" step="1" value="1" required>
                 
                
                 <label for="transporte_favorito">Meio de Transporte Favorito:</label>
@@ -61,19 +64,18 @@
                 </select><br><br>
     
                 
-                <label>Serviço Desejado:</label><br>
+                <label>Serviço Desejado:</label>
                 <input type="radio" id="basico" name="servico" value="basico" required>
-                <label for="basico">Básico</label><br>
+                <label for="basico">Básico</label>
                 <input type="radio" id="premium" name="servico" value="premium">
-                <label for="premium">Premium</label><br><br>
+                <label for="premium">Premium</label>
     
                 
-                <label for="pedidos_especiais">Pedidos Especiais:</label><br>
-                <textarea id="pedidos_especiais" name="pedidos_especiais" rows="4" cols="50" placeholder="Insira seus pedidos especiais"></textarea><br><br>
-    
+                <label for="pedidos_especiais">Pedidos Especiais:</label>
+                <textarea id="pedidos_especiais" name="pedidos_especiais" rows="4" cols="50" placeholder="Insira seus pedidos especiais"></textarea>
                 
                 <label for="valor_gasto">Valor que espera gastar por pessoa e por dia (em euros):</label>
-                <input type="number" id="valor_gasto" name="valor_gasto" min="0" step="0.01" placeholder="Ex: 100.00" required><br><br>
+                <input type="number" id="valor_gasto" name="valor_gasto" min="0" step="0.01" placeholder="Ex: 100.00" required>
             </fieldset>
     
             <fieldset><input type="submit" value="Enviar Intenção de Viagem"></fieldset>
