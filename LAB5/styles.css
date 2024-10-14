@@ -19,6 +19,7 @@ header h1 {
     color: white;
     margin: 0 0 20px 0;
     font-size: 2em;
+    text-transform: uppercase;
 }
 
 
@@ -34,12 +35,25 @@ nav a {
     padding: 8px 15px;
     margin: 0 10px;
     font-size: 16px;
+    position: relative;
 }
 
 
 nav a:hover {
     background-color: #E5D1B8; 
     color: #213555; 
+    
+}
+
+nav a::before {
+    content: ''; /* Cria um espaço para o ícone */
+    position: absolute;
+    left: -20px; /* Ajuste conforme necessário */
+    width: 16px; /* Largura do ícone */
+    height: 16px; /* Altura do ícone */
+    background-color: transparent; /* Inicialmente transparente */
+    transition: background-color 0.3s; /* Transição suave */
+    
 }
 
 
@@ -228,3 +242,30 @@ label, input {
     margin-bottom: 10px;
 }
 
+.fotografias a img {
+    cursor: zoom-in; 
+}
+
+* {font-family: 'Syne Mono', monospace;}
+
+a {
+    text-decoration: none; 
+    color: #000; 
+}
+
+
+a:link {
+    color: blue; 
+}
+
+a:visited {
+    color: gray; 
+}
+
+a:hover {
+    color: red; 
+}
+
+a:active {
+    color: orange; 
+}
