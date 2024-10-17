@@ -257,15 +257,15 @@ a {
 
 
 a:link {
-    color: blue; 
+    color: white; 
 }
 
 a:visited {
-    color: gray; 
+    color: rgb(255, 255, 255); 
 }
 
 a:hover {
-    color: red; 
+    color: #E5D1B8; 
 }
 
 a:active {

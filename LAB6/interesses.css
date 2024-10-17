@@ -38,7 +38,12 @@ input[type="text"] {
     border-radius: 5px;
 }
 
-ol, ul {
+ol {
+    padding-left: 40px;
+    margin: 0;
+}
+
+ul {
     padding-left: 20px;
     margin: 0;
 }
@@ -109,7 +114,8 @@ tr:nth-child(odd) {
     background-color: white;  
   }
 
-  * {font-family: 'Syne Mono', monospace;
+  * {
+    font-family: 'Syne Mono', monospace;
     box-sizing: border-box;
 }
   

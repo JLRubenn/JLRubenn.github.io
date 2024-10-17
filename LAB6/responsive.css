@@ -22,8 +22,13 @@ body {
     }
 
     aside {
-        display: none; /* Esconder aside em mobile portrait */
+        display: none; 
     }
+
+    .iframe-container{
+        width: 400;
+        height: 450;
+}
 }
 
 
@@ -36,7 +41,7 @@ body {
     }
 
     aside {
-        display: none; /* Esconder aside em mobile landscape */
+        display: none; 
     }
 
     main {
@@ -76,13 +81,16 @@ body {
 
     main {
         display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 30px;
     }
 
     aside {
         width: 100%;
         padding: 10px;
+    }
+
+    .iframe-container{
+            width: 600;
+            height: 450;
     }
 }
 
