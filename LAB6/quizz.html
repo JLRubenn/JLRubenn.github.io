@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <title>Paris</title>
+</head>
+<body>
+    <header>
+        <h1>Paris</h1>
+        <div class="image-container">
+            <img src="images/paris.jpeg" alt="Paris" class="center-img">
+            <img src="images/cada8c_a8ad1da8aed349b6a33c3d1d9e39ea34~mv2.jpeg" alt="paris2" class="center-img2">
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="local.html"><i class="fas fa-map"></i> Localização</a>
+        <a href="multimedia.html"><i class="fas fa-camera"></i> Multimédia</a>
+        <a href="info.html"><i class="fas fa-info-circle"></i> Informação</a>
+        <a href="quizz.html"><i class="fas fa-question-circle"></i> Quizz</a>
+        <a href="viagem.html"><i class="fas fa-plane"></i> Viagem</a>
+        <a href="pontosinteresse.html"><i class="fas fa-star"></i> Pontos Interesse</a>
+        <a href="capitais.html"><i class="fas fa-globe"></i> Capitais</a>
+    </nav>
+
+    <main>
+        <h2>Quizz</h2>
+       
+
+        <form method="get" action="https://postman-echo.com/get" id="quiz_form">
+        <fieldset>
+            <legend>Dados Pessoais</legend>
+            
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+            
+            <label for="apelido">Apelido:</label>
+            <input type="text" id="apelido" name="apelido" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </fieldset>
+
+        
+        <fieldset>
+            <legend>Quizz sobre Paris</legend>
+            
+            <label for="capital_franca">Qual é a capital da França?</label>
+            <input type="text" id="capital_franca" name="capital_franca" placeholder="Insira sua resposta" form="quiz_form" required>
+            
+            
+            <label>Em que ano ocorreu a Revolução Francesa?</label>
+            <input type="radio" id="ano1789" name="revolucao_francesa" value="1789" required>
+            <label for="ano1789">1789</label>
+            <input type="radio" id="ano1799" name="revolucao_francesa" value="1799">
+            <label for="ano1799">1799</label>
+            <input type="radio" id="ano1815" name="revolucao_francesa" value="1815">
+            <label for="ano1815">1815</label>
+            
+            
+            <label>Quais destes monumentos já visitou em Paris?</label>
+            <input type="checkbox" id="torre_eiffel" name="monumentos" value="Torre Eiffel">
+            <label for="torre_eiffel">Torre Eiffel</label>
+            <input type="checkbox" id="louvre" name="monumentos" value="Museu do Louvre">
+            <label for="louvre">Museu do Louvre</label>
+            <input type="checkbox" id="notre_dame" name="monumentos" value="Notre-Dame">
+            <label for="notre_dame">Catedral de Notre-Dame</label>
+
+            
+            <label for="data_visita">Quando visitou Paris pela última vez?</label>
+            <input type="date" id="data_visita" name="data_visita" required>
+            
+        
+            <label for="hora_visita">Que horas visitou a Torre Eiffel?</label>
+            <input type="time" id="hora_visita" name="hora_visita" step="300">
+            
+           
+            <label for="cor_favorita">Escolha uma cor que representa sua experiência em Paris:</label>
+            <input type="color" id="cor_favorita" name="cor_favorita" value="#ff5733">
+
+            
+            <label for="num_visitas">Quantas vezes já visitou Paris?</label>
+            <input type="number" id="num_visitas" name="num_visitas" min="0" max="100" step="1" value="1">
+            
+            
+            <label for="avaliacao">Avalie sua experiência em Paris (0 a 10):</label>
+            <input type="range" id="avaliacao" name="avaliacao" min="0" max="10" step="1" value="5">
+
+
+            <label for="imagem_paris">Escolha uma imagem que representa Paris:</label>
+            <input type="image" id="imagem_paris" name="imagem_paris" src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Paris_Night.jpg" alt="Imagem de Paris" width="200"><br><br>
+            
+            <label for="opiniao">Escreva brevemente sua opinião sobre Paris:</label>
+            <textarea id="opiniao" name="opiniao" rows="4" cols="50" placeholder="Compartilhe seus pensamentos sobre Paris" maxlength="500"></textarea><br><br>
+            
+            <label for="bairro_paris">Escolha um bairro famoso de Paris:</label>
+            <input type="text" id="bairro_paris" name="bairro_paris" list="bairros" autocomplete="on" placeholder="Escolha um bairro" required><br>
+            <datalist id="bairros">
+                <option value="Montmartre">
+                <option value="Marais">
+                <option value="Latin Quarter">
+                <option value="Saint-Germain-des-Prés">
+            </datalist>
+        </fieldset>
+
+        <fieldset>
+            <input type="reset" value="Resetar Quiz">
+            <input type="submit" value="Enviar Quiz">
+        </fieldset>
+        </form>
+    </main>
+
+    <aside>
+        <p>Outros vídeos relacionados à arquitetura de Paris.</p>
+    </aside>
+
+    <footer>
+        <p>Ruben Graça - Universidade Lusofona - 2024</p>
+    </footer>
+</body>
+</html>

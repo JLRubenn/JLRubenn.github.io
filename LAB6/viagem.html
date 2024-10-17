@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <title>Paris</title>
+</head>
+<body>
+    <header>
+        <h1>Paris</h1>
+        <div class="image-container">
+            <img src="images/paris.jpeg" alt="Paris" class="center-img">
+            <img src="images/cada8c_a8ad1da8aed349b6a33c3d1d9e39ea34~mv2.jpeg" alt="paris2" class="center-img2">
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="local.html"><i class="fas fa-map"></i> Localização</a>
+        <a href="multimedia.html"><i class="fas fa-camera"></i> Multimédia</a>
+        <a href="info.html"><i class="fas fa-info-circle"></i> Informação</a>
+        <a href="quizz.html"><i class="fas fa-question-circle"></i> Quizz</a>
+        <a href="viagem.html"><i class="fas fa-plane"></i> Viagem</a>
+        <a href="pontosinteresse.html"><i class="fas fa-star"></i> Pontos Interesse</a>
+        <a href="capitais.html"><i class="fas fa-globe"></i> Capitais</a>
+    </nav>
+
+    <main>
+        <h2>Viagem</h2>
+        <form method="post" action="https://postman-echo.com/post">
+            <fieldset>
+                <legend>Dados Pessoais</legend>
+                
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Insira nome" required>
+                
+                <label for="apelido">Apelido:</label>
+                <input type="text" id="apelido" name="apelido" placeholder="Insira apelido" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+            </fieldset>
+    
+            
+            <fieldset>
+                <legend>Detalhes da Viagem</legend>
+                
+                
+                <label for="data_partida">Data de Partida:</label>
+                <input type="date" id="data_partida" name="data_partida" required>
+                
+                
+                <label for="data_regresso">Data de Regresso:</label>
+                <input type="date" id="data_regresso" name="data_regresso" required>
+    
+                
+                <label for="num_passageiros">Número de Passageiros:</label>
+                <input type="number" id="num_passageiros" name="num_passageiros" min="1" max="10" step="1" value="1" required>
+                
+               
+                <label for="transporte_favorito">Meio de Transporte Favorito:</label>
+                <select id="transporte_favorito" name="transporte_favorito" required>
+                    <option value="carro">Carro</option>
+                    <option value="comboio">Comboio</option>
+                    <option value="aviao">Avião</option>
+                    <option value="outros">Outros</option>
+                </select><br><br>
+    
+                
+                <label>Serviço Desejado:</label>
+                <input type="radio" id="basico" name="servico" value="basico" required>
+                <label for="basico">Básico</label>
+                <input type="radio" id="premium" name="servico" value="premium">
+                <label for="premium">Premium</label>
+    
+                
+                <label for="pedidos_especiais">Pedidos Especiais:</label>
+                <textarea id="pedidos_especiais" name="pedidos_especiais" rows="4" cols="50" placeholder="Insira seus pedidos especiais"></textarea>
+                
+                <label for="valor_gasto">Valor que espera gastar por pessoa e por dia (em euros):</label>
+                <input type="number" id="valor_gasto" name="valor_gasto" min="0" step="0.01" placeholder="Ex: 100.00" required>
+            </fieldset>
+    
+            <fieldset><input type="submit" value="Enviar Intenção de Viagem"></fieldset>
+        </form>
+    </main>
+
+    <aside>
+        <p>Outros vídeos relacionados à arquitetura de Paris.</p>
+    </aside>
+
+    <footer>
+        <p>Ruben Graça - Universidade Lusofona - 2024</p>
+    </footer>
+</body>
+</html>
