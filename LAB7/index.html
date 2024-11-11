@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <nav>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+    </nav>
+
+    <h1 id="hover-message" onmouseover="showHoverMessage()" onmouseout="resetHoverMessage()">1. Passa por aqui!</h1>
+
+    <div class="inline">
+        <h2>2. Pinta-me!</h2>
+        <button onclick="changeH2Color('red')">Red</button>
+        <button onclick="changeH2Color('green')">Green</button>
+        <button onclick="changeH2Color('blue')">Blue</button>
+    </div>
+
+    <h2>3. Experimenta escrever...</h2>
+    <input type="text" id="text-input" placeholder="Digite algo" oninput="changeInputColor()">
+
+    <h2>4. Escolha uma cor em inglês:</h2>
+    <input type="text" id="color-input" placeholder="Digite uma cor em inglês" oninput="submitColor()">
+
+    <h2>5. Conta!</h2>
+    <p id="counter">Contagem: 0</p>
+    <button onclick="incrementCounter()">Conta!</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
