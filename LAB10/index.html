@@ -16,10 +16,20 @@
     </header>
 
     <main>
+
+        <div>
+            <label for="categoria">Filtrar por Categoria:</label>
+            <select id="categoria">
+                <option value="all">Todas as categorias</option>
+            </select>
+        </div>
+
         <h2>Selecione os seus Produtos</h2>
-        <section id="produtos">                  
-                 
+        <section id="produtos">                          
         </section>
+
+       
+        
     </main>
 
     <aside>
@@ -27,7 +37,7 @@
         <section id="cesto">
 
         </section>
-        <p>Custo Total:</p>
+        <p id="preco-total" style="font-weight: bold;">Custo Total: 0.00 €</p>
 
     </aside>
     <footer>
@@ -35,7 +45,7 @@
 
     </footer>
    
-    <script src="produtos.js"></script>
+    
     <script src="main.js"></script>
     
 </body>
