@@ -3,54 +3,66 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchProdutos(); // Busca todos os produtos inicialmente
     atualizaCesto(); // Atualiza o cesto com os itens do localStorage
     atualizarPrecoTotal(); // Atualiza o preço total
+
+    // Adicionar eventos para ordenação e pesquisa
+    document.getElementById("ordenar").addEventListener("change", aplicarFiltros);
+    document.getElementById("pesquisa").addEventListener("input", aplicarFiltros);
+    document.getElementById("categoria").addEventListener("change", aplicarFiltros);
 });
 
-// Função para buscar categorias
-function fetchCategorias() {
-    const apiURL = 'https://deisishop.pythonanywhere.com/categories/';
+document.addEventListener("DOMContentLoaded", () => {
+    atualizaCesto(); // Atualiza os produtos no cesto
+    atualizarPrecoTotal(); // Atualiza o custo total
+    document.getElementById("finalizar-compra").addEventListener("click", finalizarCompra);
+});
 
-    fetch(apiURL)
-        .then(response => response.json())
-        .then(categorias => {
-            console.log(categorias); // Verifica as categorias recebidas
-            carregarCategorias(categorias);
-        })
-        .catch(error => console.error('Erro ao carregar categorias:', error));
-}
-
-// Função para preencher o <select> com as categorias
-function carregarCategorias(categorias) {
-    const select = document.getElementById("categoria");
-    if (!select) return;
-
-    categorias.forEach(categoria => {
-        const option = document.createElement("option");
-        option.value = categoria;
-        option.textContent = categoria;
-        select.appendChild(option);
-    });
-
-    // Adicionar evento de mudança (change) para filtrar produtos
-    select.addEventListener("change", (event) => {
-        const categoriaSelecionada = event.target.value;
-        fetchProdutos(categoriaSelecionada); // Filtra os produtos pela categoria
-    });
-}
+// Variável global para armazenar os produtos carregados
+let todosProdutos = [];
 
 // Função para buscar produtos
-function fetchProdutos(categoria = "all") {
-    let apiURL = 'https://deisishop.pythonanywhere.com/products/';
+function fetchProdutos() {
+    const apiURL = 'https://deisishop.pythonanywhere.com/products/';
 
     fetch(apiURL)
         .then(response => response.json())
         .then(produtos => {
-            console.log(produtos); // Verifica os produtos recebidos
-            if (categoria !== "all") {
-                produtos = produtos.filter(produto => produto.category === categoria);
-            }
-            carregarProdutos(produtos); // Exibe os produtos na interface
+            todosProdutos = produtos; // Armazena os produtos na variável global
+            aplicarFiltros(); // Exibe os produtos com os filtros aplicados
         })
         .catch(error => console.error('Erro ao carregar produtos:', error));
+}
+
+// Função para aplicar os filtros, ordenação e pesquisa
+function aplicarFiltros() {
+    const categoriaSelecionada = document.getElementById("categoria").value;
+    const ordemSelecionada = document.getElementById("ordenar").value;
+    const termoPesquisa = document.getElementById("pesquisa").value.toLowerCase();
+
+    let produtosFiltrados = [...todosProdutos];
+
+    // Filtrar por categoria
+    if (categoriaSelecionada !== "all") {
+        produtosFiltrados = produtosFiltrados.filter(
+            produto => produto.category === categoriaSelecionada
+        );
+    }
+
+    // Filtrar por termo de pesquisa
+    if (termoPesquisa) {
+        produtosFiltrados = produtosFiltrados.filter(
+            produto => produto.title.toLowerCase().includes(termoPesquisa)
+        );
+    }
+
+    // Ordenar por preço
+    if (ordemSelecionada === "asc") {
+        produtosFiltrados.sort((a, b) => a.price - b.price);
+    } else if (ordemSelecionada === "desc") {
+        produtosFiltrados.sort((a, b) => b.price - a.price);
+    }
+
+    // Exibe os produtos filtrados e ordenados
+    carregarProdutos(produtosFiltrados);
 }
 
 // Função para exibir os produtos na página
@@ -100,60 +112,137 @@ function carregarProdutos(produtos) {
     });
 }
 
+// Função para buscar categorias
+function fetchCategorias() {
+    const apiURL = 'https://deisishop.pythonanywhere.com/categories/';
+
+    fetch(apiURL)
+        .then(response => response.json())
+        .then(categorias => {
+            carregarCategorias(categorias);
+        })
+        .catch(error => console.error('Erro ao carregar categorias:', error));
+}
+
+// Função para preencher o <select> com as categorias
+function carregarCategorias(categorias) {
+    const select = document.getElementById("categoria");
+    if (!select) return;
+
+    categorias.forEach(categoria => {
+        const option = document.createElement("option");
+        option.value = categoria;
+        option.textContent = categoria;
+        select.appendChild(option);
+    });
+}
+
 // Funções auxiliares (cesto e preço total, já existentes)
 function adicionarAoCesto(produto) {
     const lista = JSON.parse(localStorage.getItem('produtos-selecionados')) || [];
     lista.push(produto);
     localStorage.setItem('produtos-selecionados', JSON.stringify(lista));
-    atualizaCesto();
+    atualizarCesto();
     atualizarPrecoTotal();
 }
 
-function atualizaCesto() {
-    const section = document.getElementById("cesto");
-    section.innerHTML = ''; // Limpa o conteúdo existente
+function atualizarCesto() {
+    const cesto = document.getElementById("cesto");
+    const produtos = JSON.parse(localStorage.getItem("produtos-selecionados")) || [];
+    cesto.innerHTML = ""; // Limpar conteúdo existente
 
-    const lista = JSON.parse(localStorage.getItem('produtos-selecionados')) || [];
-    lista.forEach(produto => {
-        const article = document.createElement('article');
+    produtos.forEach(produto => {
+        const article = document.createElement("article");
+        article.classList.add("produto-cesto");
 
-        const title = document.createElement('h3');
-        title.textContent = produto.title;
-        article.appendChild(title);
+        article.innerHTML = `
+            <h3>${produto.title}</h3>
+            <img src="${produto.image}" alt="${produto.title}">
+            <h4>Custo total: ${produto.price.toFixed(2)} €</h4>
+            <p>
+                <span class="rating">⭐ ${produto.rating.rate.toFixed(1)}</span>
+                <span class="reviews">(${produto.rating.count} avaliações)</span>
+            </p>
+            <button onclick="removerDoCesto(${produto.id})">- Remover do Cesto</button>
+        `;
 
-        const image = document.createElement('img');
-        image.src = produto.image;
-        image.alt = produto.title;
-        article.appendChild(image);
-
-        const price = document.createElement('h4');
-        price.textContent = `${produto.price.toFixed(2)} €`;
-        article.appendChild(price);
-
-        const button = document.createElement('button');
-        button.textContent = '- Remover do Cesto';
-        button.addEventListener('click', () => {
-            removerDoCesto(produto.id);
-        });
-        article.appendChild(button);
-
-        section.appendChild(article);
+        cesto.appendChild(article);
     });
+
+    atualizarPrecoTotal(); // Atualizar o preço total
 }
+
 
 function removerDoCesto(produtoId) {
-    const lista = JSON.parse(localStorage.getItem('produtos-selecionados')) || [];
-    const novaLista = lista.filter(produto => produto.id !== produtoId);
+    const produtos = JSON.parse(localStorage.getItem('produtos-selecionados')) || [];
+    const novaLista = produtos.filter(produto => produto.id !== produtoId);
     localStorage.setItem('produtos-selecionados', JSON.stringify(novaLista));
-    atualizaCesto();
-    atualizarPrecoTotal();
+    atualizaCesto(); // Atualiza o cesto
 }
 
 function atualizarPrecoTotal() {
-    const lista = JSON.parse(localStorage.getItem('produtos-selecionados')) || [];
-    const total = lista.reduce((acc, produto) => acc + produto.price, 0);
-    const precoTotalElemento = document.getElementById("preco-total");
+    const produtos = JSON.parse(localStorage.getItem('produtos-selecionados')) || [];
+    const total = produtos.reduce((acc, produto) => acc + produto.price, 0);
+
+    const precoTotalElemento = document.getElementById("total");
     if (precoTotalElemento) {
-        precoTotalElemento.textContent = `Custo Total: ${total.toFixed(2)} €`;
+        precoTotalElemento.textContent = `${total.toFixed(2)} €`;
     }
 }
+
+let referenciaAtual = 2011240000;
+
+function finalizarCompra() {
+    const apiURL = 'https://deisishop.pythonanywhere.com/buy/'; // Endpoint correto
+    const produtos = JSON.parse(localStorage.getItem('produtos-selecionados')) || [];
+
+    if (produtos.length === 0) {
+        alert("O cesto está vazio!");
+        return;
+    }
+
+    const idsProdutos = produtos.map(produto => produto.id); // Extrai os IDs dos produtos
+    const estudante = document.getElementById("estudante").checked; // Verifica se o checkbox está marcado
+    const cupom = document.getElementById("cupom").value; // Obtém o cupom digitado
+
+    const dados = {
+        products: idsProdutos,
+        student: estudante,
+        coupon: cupom || null,
+    };
+
+    fetch(apiURL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dados),
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao finalizar compra: ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Resposta da API:", data);
+            exibirResultadoCompra(data);
+        })
+        .catch(error => {
+            console.error("Erro ao finalizar compra:", error);
+            alert("Houve um erro ao finalizar a compra.");
+        });
+}
+
+function exibirResultadoCompra(dados) {
+    const resultadoDiv = document.getElementById("resultado-compra");
+    const referencia = `201124-${referenciaAtual}`;
+    referenciaAtual += 1; // Incrementa a referência para a próxima compra
+
+    resultadoDiv.innerHTML = `
+        <p>Valor final a pagar (com eventuais descontos): ${dados.totalCost} €</p>
+        <p>Referência de pagamento: ${referencia}</p>
+    `;
+}
+
+
