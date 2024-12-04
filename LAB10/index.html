@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja Do Ruben</title>
+    <title>Loja </title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Loja Do Ruben</h1>
+        <h1>Loja Do Rubenzao</h1>
         <nav>
             <a href="#produtos">Produtos</a>
             <a href="#cesto">Cesto</a>
@@ -17,44 +17,44 @@
 
     <main>
         <h2>Selecione os seus Produtos</h2>
-
-        <div>
-            <label for="categoria">Filtrar por Categoria:</label>
-            <select id="categoria">
-                <option value="all">Todas as categorias</option>
+        <section id="submenu">
+            <span>Filtrar</span>
+            <select id="filtros">
+                <option value="todas">Todas as categorias</option>
             </select>
-
-            <label for="ordenar">Ordenar:</label>
+            <span>Ordenar</span>
             <select id="ordenar">
-                <option value="default">Ordenar pelo preço</option>
-                <option value="asc">Preço Crescente</option>
-                <option value="desc">Preço Decrescente</option>
+                <option value="vazio">Ordenar pelo preço</option>
+                <option value="ascendente">Ascendente</option>
+                <option value="descendente">Descendente</option>
             </select>
-
-            <label for="pesquisa">Procurar:</label>
-            <input type="text" id="pesquisa" placeholder="Pesquise por produto">
-        </div>
-
+            <span>Procurar</span>
+            <input type="text" type="procurar" placeholder=" pesquise por produtos" id="pesquisar">
+        </section>
         <section id="produtos"></section>
     </main>
 
     <aside>
         <h2>Produtos Selecionados:</h2>
-        <section id="cesto"></section>
+        <section id="cesto">
 
-        <div class="total-summary">
-            <p class="text">Custo total: <span id="total">0.00</span> €</p>
-            <p class="text">És estudante do DEISI? <input type="checkbox" id="estudante"></p>
-            <p class="text">Cupão de desconto: <input type="text" id="cupom"></p>
-            <button id="finalizar-compra">Comprar</button>
-            <p id="resultado-compra"></p>
-        </div>
+        </section>
+        
+        <section id="checkout">
+            <h3>Custo Total: <span id="custoTotal"></span></h3>
+            <p>És estudante do DEISI? <input type="checkbox" id="alunoDeisi"></p>
+            <p>Cupão de Desconto: <input type="text" id="cupao"></p>
+            <button type="submit" id="botao">Comprar</button>
+        </section>
+
     </aside>
-
     <footer>
         <p>2024</p>
-    </footer>
 
+    </footer>
+   
+    <script src="produtos.js"></script>
     <script src="main.js"></script>
+    
 </body>
 </html>
