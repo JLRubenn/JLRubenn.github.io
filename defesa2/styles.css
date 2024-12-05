@@ -1,0 +1,213 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+        
+}
+
+header{
+    grid-area: header_area;
+    z-index: 10;
+    position: sticky;    
+    top:0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #868b8e;    
+    padding: 20px;   
+    align-items: center;     
+}
+
+header h1{
+    color: white;
+}
+
+header a{
+    text-decoration: none;
+    color:white;
+    margin: 5px;
+    
+}
+
+main {
+    grid-area: main_area;
+    background-color: white;    
+    padding: 30px;
+    background-color: rgb(235, 235, 235);
+}
+main h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+aside h2{
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color:white;
+
+}
+
+#produtos{
+    display: grid;      
+    grid-template-columns: 1fr 1fr 1fr 1fr;    
+}
+
+#produtos article{
+    position: relative;
+    z-index: 5;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    margin: 10px;
+    background-color: white;
+    padding: 20px;
+    
+}    
+#produtos article h3{    
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#produtos article img{
+   width: 40%;
+   height: auto;
+   
+}
+
+#produtosarticle h4{    
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+#produtos article p{
+    font-style: italic;
+    font-size: 15px;
+    margin-bottom: 50px;
+}
+
+#produtos article button{
+    position: absolute;
+    bottom: 20px;
+    padding: 5px; 
+    border-radius: 10px;      
+}
+
+aside {
+    grid-area: aside_area;    
+    background-color: #868b8e;
+    padding:50px;
+}
+
+aside section{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+}
+
+aside section article{
+    position: relative;
+    z-index: 5;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    margin: 10px;
+    background-color: white;
+    padding: 20px;
+
+}
+
+aside section h2{
+    text-align: center;
+    color:white;
+    margin-bottom: 20px;
+
+}
+aside section img{
+    width: 20%;
+    height: auto;
+}
+aside section article h4{    
+    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+aside section article button{
+    position: absolute;
+    bottom: 20px;
+    padding: 5px; 
+    border-radius: 10px;      
+}
+
+aside p{
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: solid;
+
+
+}
+footer {
+    grid-area: footer_area;
+    padding: 30px;
+}
+
+footer p{
+    text-align: center;
+}
+
+
+body{
+    display: grid;
+    grid-template-areas:
+    'header_area'        
+    'main_area'
+    'aside_area'    
+    'footer_area';
+    max-width: 100vw;
+}
+
+#submenu{
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+
+}
+#submenu select{
+    margin-right: 20px;
+    margin-left: 5px;
+}
+#submenu input{
+    margin-left: 5px;
+}
+#checkout{
+    margin-top: 10px;
+    color:black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    
+    
+}
+#checkout p{
+    text-align: center;
+    
+}
+
+#botao{
+    width: 75px;
+    padding: 2px;
+    border-radius: 5px;
+    margin: 20px;
+    
+}
+#checkout h3{
+    text-align: center;
+}

@@ -134,7 +134,7 @@ function atualizaCesto() {
 addEventListener("DOMContentLoaded", () => {
     atualizaCesto(); // Atualiza o carrinho
     criarFiltros(); // Configura os filtros
-    ordenarPorPreco(); // Configura a ordenação
+    ordenarPorRate(); // Configura a ordenação
     pesquisar(); // Configura a pesquisa
     comprar(); // Configura o botão de compra
 });
@@ -164,13 +164,13 @@ function criarFiltros() {
 }
 
 // Função para configurar a ordenação por preço
-function ordenarPorPreco() {
+function ordenarPorRate() {
     const selectOrdenar = document.getElementById("ordenar"); // Seleciona o elemento de ordenação
     selectOrdenar.onchange = function () {
         if (this.value === "ascendente") {
-            carregarProdutos(produtos.sort((a, b) => a.price - b.price)); // Ordena por preço crescente
+            carregarProdutos(produtos.sort((a, b) => a.rate - b.rate)); // Ordena por preço crescente
         } else if (this.value === "descendente") {
-            carregarProdutos(produtos.sort((a, b) => b.price - a.price)); // Ordena por preço decrescente
+            carregarProdutos(produtos.sort((a, b) => b.rate - a.rate)); // Ordena por preço decrescente
         }
     };
 }
@@ -179,9 +179,12 @@ function ordenarPorPreco() {
 function pesquisar() {
     const pesquisarProduto = document.getElementById("pesquisar"); // Seleciona o campo de pesquisa
     pesquisarProduto.oninput = function () {
-        carregarProdutos(produtos.filter(produto => produto.title.toLowerCase().includes(this.value.toLowerCase()))); // Filtra produtos pelo título
+        carregarProdutos(produtos.filter(produto => produto.title.toLowerCase().includes(this.value.toLowerCase()))); 
+        carregarProdutos(produtos.filter(produto => produto.description.toLowerCase().includes(this.value.toLowerCase())));// Filtra produtos pelo título
     };
 }
+
+
 
 // Função para configurar o botão de compra
 function comprar() {
@@ -197,10 +200,13 @@ function comprar() {
 
         const checkBox = document.getElementById("alunoDeisi"); // Seleciona o checkbox de desconto
         const cupaoDesconto = document.getElementById("cupao"); // Seleciona o campo de cupom
+        const morada = document.getElementById("adress");
         const bodyEnvio = {
             products: idProdutos, // IDs dos produtos
             student: checkBox.checked, // Indica se é estudante
-            coupon: cupaoDesconto.value // Código do cupom
+            coupon: cupaoDesconto.value,
+            adress: morada.value // Código do cupom
+
         };
 
         fetch('https://deisishop.pythonanywhere.com/buy/', {
@@ -236,7 +242,33 @@ function comprar() {
                 const pReferencia = document.getElementById("referencia");
                 pReferencia.textContent = "Referência de pagamento: " + data.reference;
 
+                if (counter === 1) {
+                    // Exibe o valor final com desconto
+                    const newP = document.createElement('p');
+                    newP.textContent = "Morada: " + data.adress;
+                    newP.id = "adress";
+                    section.append(newP);
+                }
+
+                const pAdress = document.getElementById("adress");
+                pAdress.textContent = "Morada: " + data.adress;
+
                 counter++;
             });
     };
+}
+
+function adicionartodos() { 
+    const botaoTodos = document.getElementById("adicionar-todos");
+    botaoTodos.addEventListener("click" , () => {
+        const lista = JSON.parse(localStorage.getItem('produtos-selecionados'));
+        const idProdutos = lista.map(produto => produto.id)
+
+        const produtosAdicionar = produtos.filter(produto => !idProdutos.includes(produto))
+
+        lista.push(...produtosAdicionar);
+
+
+
+    })
 }
