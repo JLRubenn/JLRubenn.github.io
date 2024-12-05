@@ -245,17 +245,17 @@ function comprar() {
                 if (counter === 1) {
                     // Exibe o valor final com desconto
                     const newP = document.createElement('p');
-                    newP.textContent = "Morada: " + data.adress;
+                    newP.textContent = "Morada: " + morada.value;
                     newP.id = "adress";
                     section.append(newP);
                 }
 
                 const pAdress = document.getElementById("adress");
-                pAdress.textContent = "Morada: " + data.adress;
+                pAdress.textContent = "Morada: " + morada.value;
 
                 counter++;
             });
-    };
+        };
 }
 
 function adicionartodos() { 
